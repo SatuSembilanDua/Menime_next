@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier --check 'src/**/*.{jsx,js,ts,mjs,cjs,json}'",
+    "format:fix": "prettier --write 'src/**/*.{js,ts,mjs,cjs,json}'",
     "postinstall": "prisma generate"
   },
   "dependencies": {
