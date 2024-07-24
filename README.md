@@ -1,24 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![menime logo](public/imgs/icons.webp)
+
+# Menime
+
+Simple Fullstack Anime Streaming Web App built with [Next.js](https://nextjs.org/)
 
 ## Getting Started
 
-First, run the development server:
+### Running locally
+
+#### Step 1 : Install
+
+To get started, just clone the repository, navigate to project directory and run `npm install`:
+
+```bash
+git clone https://github.com/SatuSembilanDua/Menime_Next
+cd Menime_Next
+npm install
+```
+
+#### Step 2 : Configuring
+
+First rename the [`.env.example`](https://github.com/SatuSembilanDua/Menime_Next/blob/master/.env.example) file to `.env`
+
+Determine the database to be used. then configure according to the database used. More info for configuring the database can be seen [here](https://www.prisma.io/docs/orm/overview/introduction/what-is-prisma#the-prisma-schema).
+
+If you don't want to bother with database configuration then use `sqlite` database in the following way:
+
+- delete `prisma/schema.prisma` file
+- change the file name `prisma/schema.prisma.bak` to `prisma/schema.prisma`
+- open the `.env` file into a text editor then change the variable `DATABASE_URL` to `DATABASE_URL="file:./menime.db"`
+- install the database by typing the command `npx prisma migrate dev --name="init"`
+
+#### Step 3 : Run
+
+You can run in production or development mode by:
+
+- Running in development mode
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Building and deploying in production
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```bash
+npm run build
+npm start
+```
 
 ## Learn More
 
@@ -34,3 +62,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
