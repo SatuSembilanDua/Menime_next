@@ -1,5 +1,5 @@
 export const getMetaApi = async () => {
-	const url = `${process.env.API_URL}/meta.json`
+	const url = `${process.env.NEXT_PUBLIC_API_URL}/meta.json`
 	console.log(`fetch ${url}`)
 	const response = await fetch(url)
 	const data = await response.json()
@@ -7,7 +7,7 @@ export const getMetaApi = async () => {
 }
 
 export const getAnime = async () => {
-	const url = `${process.env.API_URL}/anime.json`
+	const url = `${process.env.NEXT_PUBLIC_API_URL}/anime.json`
 	console.log(`fetch ${url}`)
 	const response = await fetch(url)
 	const data = await response.json()
@@ -15,7 +15,7 @@ export const getAnime = async () => {
 }
 
 export const getEpisode = async (slug) => {
-	const url = `${process.env.API_URL}/${slug}.json`
+	const url = `${process.env.NEXT_PUBLIC_API_URL}/${slug}.json`
 	console.log(`fetch ${url}`)
 	const response = await fetch(url)
 	const data = await response.json()
