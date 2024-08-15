@@ -6,7 +6,7 @@ import SplashLoading from "@/components/SplashLoading"
 import { initMenime } from "@/libs/splashUtils"
 import { useEffect } from "react"
 
-export const Splash = async () => {
+export const Splash = () => {
 	useEffect(() => {
 		const init = async () => {
 			const data = await initMenime()
