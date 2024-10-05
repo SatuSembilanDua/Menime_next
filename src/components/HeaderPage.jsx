@@ -4,7 +4,7 @@ import Image from "next/image"
 const HeaderPage = () => {
 	return (
 		<div className="HeaderLogo border-b-4 border-color-menime p-0 text-center md:px-[100px] md:text-left">
-			<a href={"/"}>
+			<a href={"/"} className="inline-block">
 				<Image
 					src={"/imgs/icons.webp"}
 					alt="Menime Logo"

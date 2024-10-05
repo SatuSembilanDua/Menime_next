@@ -103,3 +103,12 @@ export const dropAnime = async () => {
 		console.log(error.message)
 	}
 }
+
+export const getSlugs = async () => {
+	const data = await prisma.anime.findMany({
+		select: {
+			link_anime: true,
+		},
+	})
+	return data
+}
