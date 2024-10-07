@@ -1,18 +1,19 @@
-"use client"
+// "use client"
 import SafeAreaView from "@/components/SafeAreaView"
 import View from "@/components/View"
 import Text from "@/components/Text"
 import SplashLoading from "@/components/SplashLoading"
 import { initMenime } from "@/libs/splashUtils"
-import { useEffect } from "react"
+// import { useEffect } from "react"
 
-export const Splash = () => {
-	useEffect(() => {
-		const init = async () => {
-			const data = await initMenime()
-		}
-		init().catch(console.error)
-	}, [])
+export const Splash = async () => {
+	const data = await initMenime()
+	// useEffect(() => {
+	// 	const init = async () => {
+	// 		const data = await initMenime()
+	// 	}
+	// 	init().catch(console.error)
+	// }, [])
 	return (
 		<>
 			<SafeAreaView>

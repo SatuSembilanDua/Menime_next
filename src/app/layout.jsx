@@ -7,21 +7,21 @@ export const metadata = {
 	title: "Menime",
 	description:
 		"Menine adalah situs nonton anime sub Indo, streaming anime online bahasa Indonesia gratis.",
-	metadataBase: new URL("http://menime.epizy.com"),
+	metadataBase: new URL("http://menime.vercel.app"),
 	openGraph: {
 		title: "Menime",
 		description:
 			"Menine adalah situs nonton anime sub Indo, streaming anime online bahasa Indonesia gratis.",
-		url: "http://menime.epizy.com",
+		url: "http://menime.vercel.app",
 		siteName: "Menime",
 		images: [
 			{
-				url: "http://menime.epizy.com/assets/img/icons.webp",
+				url: "https://menime.vercel.app/imgs/icons.webp",
 				with: 1366,
 				height: 396,
 			},
 			{
-				url: "http://menime.epizy.com/assets/img/icons.png",
+				url: "https://menime.vercel.app/imgs/icons.webp",
 				with: 1366,
 				height: 396,
 				alt: "Menime logo",

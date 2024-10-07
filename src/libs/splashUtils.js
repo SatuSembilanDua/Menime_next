@@ -54,13 +54,13 @@ export const tambahAllEpisode = async () => {
 }
 
 export const updateEpisode = async (metaApi, metaDb) => {
+	console.log(metaApi.hash)
+	console.log(metaDb.hash)
 	if (metaApi.hash == metaDb.hash) {
 		console.log("Nothing")
 		return true
 	}
 	const mt = await addMeta(metaApi)
-	console.log(metaApi.hash)
-	console.log(metaDb.hash)
 	if (metaApi.command == "ongoing") {
 		const slugs = await getOngoing()
 		for (let { id_anime, link_anime } of slugs) {
@@ -93,6 +93,7 @@ export const updateEpisode = async (metaApi, metaDb) => {
 export const initMenime = async () => {
 	const metaApi = await getMetaApi()
 	const metaDb = await initMeta()
+	console.log(metaApi)
 	if (metaDb == null) {
 		await createMeta(metaApi)
 		const animeApi = await getAnime()
@@ -100,11 +101,6 @@ export const initMenime = async () => {
 		await tambahAllEpisode()
 		return true
 	} else {
-		// TODO : update
-		// await updateMetadbg(6, "4a35d1590d91f8aba90c526660abedff")
-		// await deleteMeta(7)
-		// await deleteEpisode("ME0012001112")
-		// await deleteEpisode("ME0012001111")
 		updateEpisode(metaApi, metaDb)
 	}
 }

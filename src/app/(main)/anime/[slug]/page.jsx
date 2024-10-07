@@ -31,14 +31,14 @@ const getAnimeFromSlug = async (slug) => {
 }
 
 export const generateMetadata = async ({ params: { slug } }) => {
-	const data = await getAnimeFromSlug(slug)
+	const data = await getAnime(slug)
 	return {
 		title: `${data.judul_anime} | Menime`,
 	}
 }
 
 const AnimePage = async ({ params: { slug } }) => {
-	const anime = await getAnimeFromSlug(slug)
+	const anime = await getAnime(slug)
 	// const slugs = await getSlugs()
 	// console.log(slugs.map((item) => item.link_anime))
 	return (
