@@ -1,52 +1,37 @@
-import { getAnim } from "@/libs/models/tbl_anime"
-import { getAllEpisode, getIdEpisode } from "@/libs/models/tbl_episode"
-import { NextRequest, NextResponse } from "next/server"
-
-const perPage = 10
+import { apiResonse } from "@/lib/apiroute"
+import { episodeModel as model, animeModel } from "@/lib/repo"
 
 export const GET = async (request, { params }) => {
-	try {
-		// console.log(request.nextUrl.searchParams.get("page"))
-		let page = request.nextUrl.searchParams.get("page")
-		page = page == null ? 1 : parseInt(page)
-		let sort = request.nextUrl.searchParams.get("sort")
-		sort = sort == null ? false : sort == "1" ? true : false
-		let search = request.nextUrl.searchParams.get("search")
-		search = search == null ? "" : search
-		const slug = params.slug
-
-		const anime = await getAnim(slug)
-		console.log(anime)
-		if (anime == null) {
-			console.log("DISINI")
-			return NextResponse.json([], { status: 404 })
-		}
-		sort = anime.sts == 0 ? !sort : sort
-		const { cursor, length, hasNext } = await getIdEpisode(
-			anime.id_anime,
-			page,
-			sort,
-			search,
+	const { slug } = await params
+	const anime = await animeModel.getForEpisode(slug)
+	if (anime == null) {
+		return apiResonse(
+			() => ({
+				error: "Anime not found!",
+			}),
+			404
 		)
-		console.log(cursor)
-		if (cursor == null) {
-			return NextResponse.json([], { status: 404 })
-		}
-		const episode = await getAllEpisode(
-			anime.id_anime,
-			cursor.id_episode,
-			sort,
-			search,
-		)
-		const ret = {
-			data: episode,
-			page: page,
-			length: length,
-			has_next: hasNext,
-		}
-		return NextResponse.json(ret, { status: 200 })
-	} catch (error) {
-		console.log(error.message)
-		return new Response("Failed to fetch episode", { status: 500 })
 	}
+	let page = request.nextUrl.searchParams.get("page")
+	let query = request.nextUrl.searchParams.get("query")
+	let sort = request.nextUrl.searchParams.get("sort")
+	page = page == null ? 1 : Number(page)
+	query = query == null ? "" : query
+	sort = sort == null ? false : sort == "1" ? true : false // false : ASC, true: DESC
+	sort = anime.sts == 0 ? !sort : sort
+	const where = { id_anime: anime.id_anime }
+	const order = { id_eps: sort ? "desc" : "asc" }
+	const data = {
+		data: await model.getSearchPaginWhere(where, query, page, order),
+		pagination: {
+			current_page: page,
+			pages: await model.getPageWhere(where, query),
+		},
+		search_query: query,
+		order: order,
+	}
+	// const data = await model.getSearchPaginWhere({ id_anime: anime.id_anime }, query, page, {
+	// 	id_eps: sort ? "desc" : "asc",
+	// })
+	return apiResonse(() => data)
 }

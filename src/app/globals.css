@@ -3,83 +3,54 @@
 @tailwind utilities;
 
 body {
-  background: #0a0909;
-  color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
 }
-hr{
-  margin: 10px 0;
+
+@layer base {
+  :root{
+    --background: #0f0f0f;
+    --foreground: #ffffff;
+    --primary: #e50914;
+    --border: #E2E8F0;
+    --merah: #CD2026;
+    --hijau: #5EBA7D;
+    --kuning: #F0AD4E;
+    --biru: #337AB7;
+    --muted: #F1F5F9;
+    --radius: 0.5rem;
+  }
 }
+
+@layer base {
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}
+
 a{
-  color: #e50914;
+  color: var(--primary);
 }
 a:focus, a:hover {
-  color: #23527c;
+  color: var(--foreground);
 }
-.breadcrumb > li{
-  display: inline-block;
-}
-.breadcrumb>li+li:before {
-  padding: 0 5px;
-  color: #ccc;
-  content: "/\00a0";
-}
-.page-title{
-  margin: 20px -15px;
-  padding-left: 20px;
-  border-left: 5px solid #e50914;
-  font-size: 1.5em;
-}
-
-@media (max-width: 768px){
-  .breadcrumb>li:nth-child(2){
-    max-width: 190px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  .page-title{
-    font-size: 1em;
-    font-weight: 900;
-  }
-}
-
 /*
 scroll things
 */
-
 *::-webkit-scrollbar {
   width: 10px;
 }
-
 /* Track */
 *::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
-
 /* Handle */
 *::-webkit-scrollbar-thumb {
   background: #e50914; 
 }
-
 /* Handle on hover */
 *::-webkit-scrollbar-thumb:hover {
   background: #555; 
-}
-/*  */
-.privacy>h1,.privacy>h2,.privacy>h3{
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-.privacy>h1, .privacy>h2, .privacy>h3, .privacy>h4, .privacy>h5, .privacy>h6{
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.1;
-}
-.privacy>h2{
-  font-size: 1.7em;
-}
-.privacy>p{
-  color: #FFF;
-  margin-bottom: 15px;
-  line-height: 23px;
 }
