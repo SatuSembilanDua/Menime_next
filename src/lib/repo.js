@@ -111,3 +111,5 @@ episodeModel.getEpisode = async function (slug) {
 		throw new Error(`Failed to get '${this.name}' data.`)
 	}
 }
+
+export const HistoryModel = new DataModel(prisma.riwayat, "riwayat", {})

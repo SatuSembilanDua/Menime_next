@@ -10,6 +10,7 @@ import PlayCircle from "./PlayCircle"
 import SortDescending from "./SortDescending"
 import SortAscending from "./SortAscending"
 import Loading from "./Loading"
+import CloseIcon from "./CloseIcon"
 
 export {
 	ArrowFatLeft,
@@ -24,4 +25,5 @@ export {
 	SortAscending,
 	SortDescending,
 	Loading,
+	CloseIcon,
 }

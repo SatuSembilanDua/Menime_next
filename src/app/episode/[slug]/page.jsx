@@ -1,7 +1,8 @@
-import { CaretDoubleLeft, CaretDoubleRight, FullScreen, ListIcon } from "@/components/graphics/graphics"
-import NavKey from "@/components/shared/nav-key"
+import { ArrowFatLeft, CaretDoubleLeft, CaretDoubleRight, ListIcon } from "@/components/graphics/graphics"
+import ModalEpisode from "@/components/shared/modal-episode"
+import { NavKey } from "@/components/shared/nav-key"
 import { ViewEpisodeSkeleton } from "@/components/shared/skeletons"
-import { Button, LinkButton } from "@/components/ui/button"
+import { LinkButton } from "@/components/ui/button"
 import Iframe from "@/components/ui/iframe"
 import { APP_DESCRIPTION, APP_NAME, SERVER_URL } from "@/lib/constants"
 import { episodeModel } from "@/lib/repo"
@@ -45,11 +46,11 @@ const ViewEpisodePage = async ({ params }) => {
 				<div className="t-0 l-0 absolute h-dvh w-dvw">
 					<Iframe className="w-full h-full" src={episode.vid} allowFullScreen={true} />
 				</div>
-				<div className="t-0 l-0 absolute z-[9996] w-screen">
+				<div className="t-0 l-0 absolute z-40 w-screen">
 					<div className="flex items-center justify-between gap-4 text-primary px-8 py-4 hover:bg-black/40 transition-all duration-300 ease-in-out">
 						<div className="flex gap-2">
-							<LinkButton href={`/anime/${episode.Animes.link_anime}`}>
-								<ListIcon width={24} height={24} />
+							<LinkButton href={`/anime/${episode.Animes?.link_anime}`}>
+								<ArrowFatLeft width={24} height={24} />
 							</LinkButton>
 							<LinkButton href={prev == null ? "#" : `/episode/${prev}`}>
 								<CaretDoubleLeft width={24} height={24} />
@@ -62,9 +63,7 @@ const ViewEpisodePage = async ({ params }) => {
 							<h1 className="text-white">{`${episode.eps} - ${episode.judul}`}</h1>
 						</div>
 						<div>
-							<Button>
-								<FullScreen width={32} height={32} />
-							</Button>
+							<ModalEpisode anime={episode.Animes} slug={slug} />
 						</div>
 					</div>
 				</div>

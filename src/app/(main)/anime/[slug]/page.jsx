@@ -1,6 +1,6 @@
 import ButtonSort from "@/components/shared/button-sort"
 import EpisodeList from "@/components/shared/episode-list"
-import EpisodePage from "@/components/shared/episode-page"
+import { PageKey } from "@/components/shared/nav-key"
 import PageTitle from "@/components/shared/page-title"
 import Pagination from "@/components/shared/pagination"
 import Search from "@/components/shared/search"
@@ -51,6 +51,7 @@ const AnimePage = async ({ params, searchParams }) => {
 	const where = { id_anime: anime.id_anime }
 	const data = await episodeModel.getSearchPaginWhere(where, query, currentPage, order)
 	const totalPage = await episodeModel.getPageWhere(where, query)
+	// console.log(currentPage, totalPage)
 	return (
 		<>
 			<Suspense key={slug} fallback={<EpisodeSkeleton />}>
@@ -71,6 +72,7 @@ const AnimePage = async ({ params, searchParams }) => {
 				<div className="flex justify-center mt-4">
 					<Pagination totalPages={totalPage} />
 				</div>
+				<PageKey totalPage={totalPage} />
 			</Suspense>
 		</>
 	)

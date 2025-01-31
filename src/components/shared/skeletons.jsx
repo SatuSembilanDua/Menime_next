@@ -1,4 +1,4 @@
-import { CaretDoubleLeft, CaretDoubleRight, FullScreen, ListIcon, Loading } from "../graphics/graphics"
+import { ArrowFatLeft, CaretDoubleLeft, CaretDoubleRight, FullScreen, ListIcon, Loading } from "../graphics/graphics"
 import { Button, LinkButton } from "../ui/button"
 import { Skeleton } from "../ui/skeleton"
 import PageTitle from "./page-title"
@@ -81,13 +81,13 @@ export const ViewEpisodeSkeleton = () => {
 			<div className="t-0 l-0 absolute z-[9996] w-screen">
 				<div className="flex items-center justify-between gap-4 text-primary px-8 py-4 hover:bg-black/40 transition-all duration-300 ease-in-out">
 					<div className="flex gap-2">
-						<LinkButton>
-							<ListIcon width={24} height={24} />
+						<LinkButton href={"#"}>
+							<ArrowFatLeft width={24} height={24} />
 						</LinkButton>
-						<LinkButton>
+						<LinkButton href={"#"}>
 							<CaretDoubleLeft width={24} height={24} />
 						</LinkButton>
-						<LinkButton>
+						<LinkButton href={"#"}>
 							<CaretDoubleRight width={24} height={24} />
 						</LinkButton>
 					</div>

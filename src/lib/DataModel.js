@@ -197,6 +197,22 @@ class DataModel {
 		}
 	}
 
+	async getAllWhere(where) {
+		try {
+			let conf = {
+				where: where,
+			}
+			if (this.config.include) {
+				conf.include = this.config.include
+			}
+			const data = await this.tbl.findMany(conf)
+			return data
+		} catch (error) {
+			console.log(error.message)
+			throw new Error(`Failed to get '${this.name}' data.`)
+		}
+	}
+
 	async add(item) {
 		try {
 			const data = await this.tbl.create({
