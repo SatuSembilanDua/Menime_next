@@ -11,15 +11,11 @@ export async function middleware(request) {
 			geo: request.geo,
 		},
 	}
-	console.log(postData)
-	// const addHistory = await HistoryModel.add(postData)
-	// console.log(addHistory)
 	const url = `${request.nextUrl.origin}/api/riwayat`
 	const response = await fetch(url, {
 		method: "POST",
 		body: JSON.stringify(postData),
 	})
-	// // const data = await response.json()
 	return NextResponse.next()
 }
 

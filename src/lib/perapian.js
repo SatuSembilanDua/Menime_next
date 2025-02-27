@@ -37,8 +37,8 @@ export const parseAnime = (data) => {
 }
 
 export const getEpisode = async (slug) => {
-	// const url = `${api_url}/${slug}.json`
-	const url = `http://localhost/js/tmp/${slug}.json`
+	const url = `${api_url}/${slug}.json`
+	// const url = `http://localhost/js/tmp/${slug}.json`
 	console.log(`fetch ${url}`)
 	const response = await fetch(url, { cache: "no-store" })
 	const data = await response.json()
